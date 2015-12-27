@@ -21,6 +21,11 @@ Configuracion:
     HOME_dev: http://localhost/MyT/
     HOME: http://www.google.com/
     
+    NAMEDB: myt
+    USUARIODB: root
+    PASSWORDDB: rasmysql
+    
+    
     DirRootDev: /var/www/MyT/
     DirRoot: /xx/xx/xx/
     

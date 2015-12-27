@@ -21,6 +21,8 @@ class Controlador extends Request
 	
 	public $constantes;
 	
+	public $cons;
+	
 	public $tip;
 	
 	public function __construct()
@@ -29,6 +31,7 @@ class Controlador extends Request
 		// Cargamos las constantes y las ponemos disponibles.
 		$this->setConstantes();
 		$constantes = $this->getConstantes();
+		$this->cons = $constantes;
 		
 		// Preparamos el HOME
 		if ( $_SERVER['HTTP_HOST'] == 'localhost' ){
@@ -126,9 +129,13 @@ class Controlador extends Request
 
 	public function cargarConexion()
 	{
-		ORM::configure('mysql:host=localhost;dbname=myt');
-		ORM::configure('username', 'root');
-		ORM::configure('password', 'rasmysql');
+		$nombreBD 	= $this->cons->getNAMEDB();
+		$usuario 	= $this->cons->getUSUARIODB();
+		$password 	= $this->cons->getPASSWORDDB();
+		
+		ORM::configure('mysql:host=localhost;dbname='.$nombreBD);
+		ORM::configure('username', $usuario);
+		ORM::configure('password', $password);
 		
 	}
 
